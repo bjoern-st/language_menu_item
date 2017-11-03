@@ -1,0 +1,35 @@
+<?php
+
+function language_menu_item_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
+
+  $default = language_default();
+  $options = array('' => t('Language neutral'));
+  $language_list = language_list();
+  foreach ($language_list as $value) {
+    $options[$value->langcode] = $value->name;
+  }
+
+  $form['language_select'] = array(
+    '#type' => 'select',
+    '#title' => t('Language'),
+    '#default_value' => $default->langcode,
+    '#options' => $options,
+  );
+  $form['#submit'][] = 'language_menu_item_form_menu_edit_item_submit';
+}
+
+function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
+  $values = $form_state['values'];
+
+  $menu_item = $values['original_item'];
+  $language = $values['language_select'];
+
+  if (!empty($language)) {
+    $language_list = language_list('enabled');
+    if (isset($language_list[$language])) {
+      $menu_item['options']['language'] = $language_list[$language];
+      menu_link_save($menu_item);
+    }
+  }
+  dpm($menu_item);
+}
