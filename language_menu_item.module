@@ -21,15 +21,18 @@ function language_menu_item_form_menu_edit_item_alter(&$form, &$form_state, $for
 function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
   $values = $form_state['values'];
 
-  $menu_item = $values['original_item'];
+  $item = $values['original_item'];
   $language = $values['language_select'];
 
   if (!empty($language)) {
-    $language_list = language_list('enabled');
-    if (isset($language_list[$language])) {
-      $menu_item['options']['language'] = $language_list[$language];
-      menu_link_save($menu_item);
+    // only save if language is different
+    if (!isset($item['options']['language'])
+      || (isset($item) && ($item['options']['language']['langcode'] != $language))) {
+      $language_list = language_list('enabled');
+      if (isset($language_list[$language])) {
+        $item['options']['language'] = $language_list[$language];
+        menu_link_save($item);
+      }
     }
   }
-  dpm($menu_item);
 }
