@@ -3,6 +3,10 @@
 function language_menu_item_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
 
   $default = language_default();
+  $item = $form['original_item']['#value'];
+  if (isset($item['options']['language'])) {
+    $default = $item['options']['language'];
+  }
   $options = array('' => t('Language neutral'));
   $language_list = language_list();
   foreach ($language_list as $value) {
@@ -25,14 +29,10 @@ function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
   $language = $values['language_select'];
 
   if (!empty($language)) {
-    // only save if language is different
-    if (!isset($item['options']['language'])
-      || ($item['options']['language']['langcode'] != $language)) {
-      $language_list = language_list('enabled');
-      if (isset($language_list[$language])) {
-        $item['options']['language'] = $language_list[$language];
-        menu_link_save($item);
-      }
+    $language_list = language_list('enabled');
+    if (isset($language_list[$language])) {
+      $item['options']['language'] = $language_list[$language];
+      menu_link_save($item);
     }
   }
 }
