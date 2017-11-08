@@ -27,7 +27,7 @@ function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
   if (!empty($language)) {
     // only save if language is different
     if (!isset($item['options']['language'])
-      || (isset($item) && ($item['options']['language']['langcode'] != $language))) {
+      || ($item['options']['language']['langcode'] != $language)) {
       $language_list = language_list('enabled');
       if (isset($language_list[$language])) {
         $item['options']['language'] = $language_list[$language];
