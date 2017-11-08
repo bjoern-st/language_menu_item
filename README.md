@@ -1,16 +1,7 @@
-The Name of My Project
-======================
+Language Menu Item
+==================
 
-Foo project enables you to do bar. The first paragraph of this file should be
-kept short as it will be used as the project summary on backdropcms.org. Aim for
-about 240 characters (three lines at 80 characters each).
-
-All lines in this file should be no more than 80 characters long for legibility,
-unless including a URL or example that requires the line not wrap. (The first
-line of this paragraph is 80 characters for reference.)
-
-Detail in READMEs should be limited to the minimum required for installation and
-getting started. More detailed documentation should be moved to a GitHub wiki page. https://github.com/backdrop-contrib/setup/wiki/Documentation
+Language menu item just adds a language selection option to the menu item edit form.
 
 Installation
 ------------
@@ -18,35 +9,14 @@ Installation
 - Install this module using the official Backdrop CMS instructions at
   https://backdropcms.org/guide/modules
 
-- Visit the configuration page under Administration > Configuration > Category >
-  Foo (admin/config/category/foo) and enter the required information.
+- Edit your menu item and give them the right language.
 
-- Any additional steps.
-
-Documentation
--------------
-
-Additional documentation is located in the Wiki:
-https://github.com/backdrop-contrib/foo-project/wiki/Documentation
-
-Issues
-------
-
-Bugs and Feature requests should be reported in the Issue Queue:
-https://github.com/backdrop-contrib/foo-project/issues
 
 Current Maintainers
 -------------------
 
-- John Smith (https://github.com/username/)
-- Jane Smith (https://github.com/username/)
+- Bjoern (https://github.com/bjoern-st/)
 
-Credits
--------
-
-- Ported to Backdrop CMS by Betty Boop (https://github.com/username).
-- Originally written for Drupal by Bob Brown (https://github.com/username).
-- Based on Barbara Bailey's MagicalCode project (https://github.com/example).
 
 License
 -------
