@@ -3,4 +3,5 @@ description = "Adds a language select field to the menu item edit form."
 package = Translation
 type = module
 backdrop = 1.x
+version = 1.x-1.x-dev
 
