@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * @param  array  &$form       Nested array of form elements that comprise the form.
+ * @param  array  &$form_state A keyed array containing the current state of the form.
+ * @param  string $form_id     String representing the name of the form itself.
+ * @return array               the altered form by reference
+ */
 function language_menu_item_form_menu_edit_item_alter(&$form, &$form_state, $form_id) {
 
   $default = language_default();
@@ -22,6 +29,12 @@ function language_menu_item_form_menu_edit_item_alter(&$form, &$form_state, $for
   $form['#submit'][] = 'language_menu_item_form_menu_edit_item_submit';
 }
 
+
+/**
+ * Implements form_submit().
+ * @param  array  &$form       Nested array of form elements that comprise the form.
+ * @param  array  &$form_state A keyed array containing the current state of the form.
+ */
 function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
   $values = $form_state['values'];
 
