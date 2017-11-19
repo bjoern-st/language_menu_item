@@ -48,8 +48,13 @@ function language_menu_item_form_menu_edit_item_submit($form, $form_state) {
     }
   }
   else {
-    unset($item['options']['language']);
-    unset($item['localized_options']['language']);
+    // remove language context if exists
+    if (isset($item['options']['language'])) {
+      unset($item['options']['language']);
+    }
+    if (isset($item['localized_options']['language'])) {
+      unset($item['localized_options']['language']);
+    }
   }
   menu_link_save($item);
 }
